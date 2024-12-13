@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+void convertTemperature(int choice, double temperature) {
+    switch (choice) {
+        case 1: // Celsius to Fahrenheit
+            printf("%.2f Celsius is %.2f Fahrenheit\n", temperature, (temperature * 9 / 5) + 32);
+            break;
+        case 2: // Celsius to Kelvin
+            printf("%.2f Celsius is %.2f Kelvin\n", temperature, temperature + 273.15);
+            break;
+        case 3: // Fahrenheit to Celsius
+            printf("%.2f Fahrenheit is %.2f Celsius\n", temperature, (temperature - 32) * 5 / 9);
+            break;
+        case 4: // Fahrenheit to Kelvin
+            printf("%.2f Fahrenheit is %.2f Kelvin\n", temperature, (temperature - 32) * 5 / 9 + 273.15);
+            break;
+        case 5: // Kelvin to Celsius
+            printf("%.2f Kelvin is %.2f Celsius\n", temperature, temperature - 273.15);
+            break;
+        case 6: // Kelvin to Fahrenheit
+            printf("%.2f Kelvin is %.2f Fahrenheit\n", temperature, (temperature - 273.15) * 9 / 5 + 32);
+            break;
+        default:
+            printf("Invalid choice.\n");
+            break;
+    }
+}
+
+int main() {
+    int choice;
+    double temperature;
+    char continueChoice;
+
+    do {
+        printf("Temperature Conversion Program\n");
+        printf("1. Convert Celsius to Fahrenheit\n");
+        printf("2. Convert Celsius to Kelvin\n");
+        printf("3. Convert Fahrenheit to Celsius\n");
+        printf("4. Convert Fahrenheit to Kelvin\n");
+        printf("5. Convert Kelvin to Celsius\n");
+        printf("6. Convert Kelvin to Fahrenheit\n");
+        printf("Enter your choice (1-6): ");
+        scanf("%d", &choice);
+
+        if (choice >= 1 && choice <= 6) {
+            printf("Enter the temperature: ");
+            scanf("%lf", &temperature);
+            convertTemperature(choice, temperature);
+        } else {
+            printf("Invalid choice.\n");
+        }
+
+        printf("Do you want to perform another conversion? (y/n): ");
+        scanf(" %c", &continueChoice);
+
+    } while (continueChoice == 'y' || continueChoice == 'Y');
+
+    printf("Thank you for using the Temperature Conversion Program. Goodbye!\n");
+    return 0;
+}
